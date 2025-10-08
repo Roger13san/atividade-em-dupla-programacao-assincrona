@@ -4,19 +4,6 @@
     {{#each tasks}}
       <li>
         <b>{{this.title}}</b> - {{this.description}} - 
-        {{#if this.done}}
-            ✅ Concluída
-        {{else}}
-            🕗 Pendente
-        {{/if}}
-        <a href="/tasks/edit/{{this.id}}">Editar</a>
-        <form style="display:inline;" method="post" action="/tasks/delete">
-          <input type="hidden" name="id" value="{{this.id}}"/>
-          <button type="submit">Excluir</button>
-        </form>
-      </li>
-      <li>
-        <b>{{this.title}}</b> - {{this.description}} - 
         <span>🔺 {{this.priority}}</span> -
         {{#if this.done}}✅ Concluída{{else}}🕗 Pendente{{/if}}
         <a href="/tasks/edit/{{this.id}}">Editar</a>
