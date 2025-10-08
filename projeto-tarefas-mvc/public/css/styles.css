@@ -1,0 +1,19 @@
+li {
+  margin-bottom: 8px;
+  padding: 6px;
+  border-radius: 6px;
+}
+
+li span {
+  font-weight: bold;
+}
+
+li span:contains('Alta') {
+  color: red;
+}
+li span:contains('Média') {
+  color: orange;
+}
+li span:contains('Baixa') {
+  color: green;
+}
