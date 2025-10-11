@@ -1,22 +1,23 @@
 <h2>Editando a tarefa: {{task.title}}</h2>
-<form action="/tasks/edit" method="post">
-  <input type="hidden" name="id" value="{{task.id}}" />
+<form action="/tasks/edit" method="post" id="forms">
+  <input class="edit" type="hidden" name="id" value="{{task.id}}" />
 
-  <label>Título:</label><br>
-  <input type="text" name="title" value="{{task.title}}" required/><br>
+    <h3><label>Título:</label><br></h3>
+  
+  <input class="edit" type="text" name="title" value="{{task.title}}" required/><br>
 
-  <label>Descrição:</label><br>
-  <input type="text" name="description" value="{{task.description}}" /><br>
+  <h3><label>Descrição:</label><br></h3>
+  <input class="edit" type="text" name="description" value="{{task.description}}" /><br>
 
-  <label>Prioridade:</label><br>
-  <select name="priority">
+  <h3><label>Prioridade:</label><br></h3>
+  <select name="priority" id="prioritySelect" onchange="updatePriorityColor(this)">
     <option value="Baixa" {{#if (eq task.priority "Baixa")}}selected{{/if}}>Baixa</option>
     <option value="Média" {{#if (eq task.priority "Média")}}selected{{/if}}>Média</option>
     <option value="Alta" {{#if (eq task.priority "Alta")}}selected{{/if}}>Alta</option>
   </select><br><br>
 
-  <label for="done">Concluída?</label>
-  <input type="checkbox" id="done" name="done" {{#if task.done}}checked{{/if}}/><br><br>
+  <h3><label for="done">A tarefa foi concluída?</label></h3>
+  <input   type="checkbox" id="donecheck" name="done" {{#if task.done}}checked{{/if}}/><br><br>
 
   <button type="submit">Salvar Alterações</button>
 </form>

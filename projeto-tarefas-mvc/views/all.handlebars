@@ -1,20 +1,34 @@
 <h2>Todas as Tarefas:</h2>
+
+<nav class="filters">
+  <a href="/tasks">Todas</a> |
+  <a href="/tasks?status=done">Concluídas</a> |
+  <a href="/tasks?status=doing">Em andamento</a>
+</nav>
+
 {{#if tasks.length}}
-  <ul>
+ <ul>
     {{#each tasks}}
-      <li>
-        <b>{{this.title}}</b> - {{this.description}} - 
-        <span>🔺 {{this.priority}}</span> -
-        {{#if this.done}}✅ Concluída{{else}}🕗 Pendente{{/if}}
+      <li class="{{#if this.done}}task-done{{/if}}">
+       <b>{{this.title}}</b> - {{this.description}} - 
+       {{#if (eq this.priority "Alta")}}
+       <span style="background: #ff6666;">🔴 {{this.priority}}</span> -
+       {{else if (eq this.priority "Média")}}
+       <span style="background: #dfd155;">🟡 {{this.priority}}</span> -
+        {{else}}
+       <span style="background: #4caf50;">🟢 {{this.priority}}</span> -
+       {{/if}}
+        {{#if this.done}}✅ Concluída
+        {{else}}🕗 Pendente - <span>📅 {{this.dueDate}}</span> -{{/if}}
         <a href="/tasks/edit/{{this.id}}">Editar</a>
-        <form style="display:inline;" method="post" action="/tasks/delete">
+       <form style="display:inline;" method="post" action="/tasks/delete">
             <input type="hidden" name="id" value="{{this.id}}"/>
             <button type="submit">Excluir</button>
-        </form>
+       </form>
       </li>
 
-    {{/each}}
-  </ul>
+      {{/each}}
+ </ul>
 {{else}}
   <p>🎉 Nenhuma tarefa cadastrada. Que tal criar uma nova?</p>
 {{/if}}

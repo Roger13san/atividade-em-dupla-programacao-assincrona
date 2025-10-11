@@ -1,18 +1,21 @@
 <h2>Criando uma nova tarefa</h2>
-<form action="/tasks/create" method="post">
-  <label>Título:</label><br>
-  <input type="text" name="title" placeholder="O que precisa ser feito?" required/><br>
-  
-  <label>Descrição:</label><br>
-  <input type="text" name="description" placeholder="Algum detalhe extra?" /><br>
-  
-  <label>Prioridade:</label><br>
-  <select name="priority" required>
+
+<form action="/tasks/create" method="post" id="createForms">
+  <h3><label for="tituloCreate">Título:</label></h3>
+  <input class="create" id="tituloCreate" type="text" name="title" placeholder="O que precisa ser feito?" required /><br>
+
+  <h3><label for="descricaoCreate">Descrição:</label></h3>
+  <input class="create" id="descricaoCreate" type="text" name="description" placeholder="Algum detalhe extra?" /><br>
+
+  <h3><label for="priority">Prioridade:</label></h3>
+  <select id="priority" name="priority" required>
     <option value="Baixa">Baixa</option>
     <option value="Média" selected>Média</option>
     <option value="Alta">Alta</option>
   </select><br><br>
 
+  <h3><label for="dueDate">Data de conclusão:</label></h3>
+  <input type="date" id="dueDate" name="dueDate" required /><br><br>
 
   <button type="submit">Criar Tarefa</button>
 </form>

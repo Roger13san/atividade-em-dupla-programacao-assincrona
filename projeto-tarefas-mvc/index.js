@@ -12,7 +12,19 @@ const PORT = 3000;
 // 3. CONFIGURAÇÃO DE MIDDLEWARES
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.engine('handlebars', exphbs());
+// 3. CONFIGURAÇÃO DE MIDDLEWARES
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+app.engine('handlebars', exphbs({
+    helpers: {
+        eq: function (a, b) {
+            return a === b;
+        }
+    }
+}));
+app.set('view engine', 'handlebars');
+app.use(express.static('public'));
 app.set('view engine', 'handlebars');
 app.use(express.static('public'));
 

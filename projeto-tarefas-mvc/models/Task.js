@@ -17,6 +17,10 @@ const Task = db.define('Task', {
     type: DataTypes.ENUM('Baixa', 'Média', 'Alta'),
     defaultValue: 'Média',
   },
+  dueDate: {
+    type: DataTypes.DATE,
+    allowNull: false,
+  },
 });
 
 module.exports = Task;
