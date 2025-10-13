@@ -1,10 +1,11 @@
 <h2>Todas as Tarefas:</h2>
 
 <nav class="filters">
-  <a href="/tasks">Todas</a> |
-  <a href="/tasks?status=done">Concluídas</a> |
-  <a href="/tasks?status=doing">Em andamento</a>
+  <a href="/tasks" class="{{#if (eq activeFilter 'all')}}active{{/if}}">Todas</a> |
+  <a href="/tasks/doing" class="{{#if (eq activeFilter 'doing')}}active{{/if}}">Em andamento</a> |
+  <a href="/tasks/done" class="{{#if (eq activeFilter 'done')}}active{{/if}}">Concluídas</a>
 </nav>
+
 
 {{#if tasks.length}}
  <ul>
@@ -19,7 +20,7 @@
        <span style="background: #4caf50;">🟢 {{this.priority}}</span> -
        {{/if}}
         {{#if this.done}}✅ Concluída
-        {{else}}🕗 Pendente - <span>📅 {{this.dueDate}}</span> -{{/if}}
+        {{else}}🕗 Pendente - <span class="date">📅 {{this.dueDate}}</span> -{{/if}}
         <a href="/tasks/edit/{{this.id}}">Editar</a>
        <form style="display:inline;" method="post" action="/tasks/delete">
             <input type="hidden" name="id" value="{{this.id}}"/>

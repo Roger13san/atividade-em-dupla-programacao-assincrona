@@ -1,4 +1,3 @@
-/* === RESET E BASE === */
 * {
   margin: 0;
   padding: 0;
@@ -13,7 +12,6 @@ body {
   padding: 30px;
 }
 
-/* === CABEÇALHO === */
 header {
   text-align: center;
   margin-bottom: 30px;
@@ -41,7 +39,6 @@ nav a:hover {
   color: #fff;
 }
 
-/* === CONTEÚDO PRINCIPAL === */
 main {
   max-width: 800px;
   margin: 0 auto;
@@ -51,7 +48,6 @@ main {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
-/* === LISTA DE TAREFAS === */
 h2 {
   text-align: center;
   margin-bottom: 20px;
@@ -73,7 +69,7 @@ li {
   align-items: center;
   flex-wrap: wrap;
   transition: transform 0.2s ease, background 0.3s;
-  border: 1px solid #c9c5c5; /* Borda padrão levemente cinza */
+  border: 1px solid #c9c5c5;  
   border-radius: 5px;
   transition: border 0.3s ease;
 }
@@ -92,16 +88,14 @@ li b {
     border: 2px solid #4caf50;
 }
 
-/* === PRIORIDADE === */
 li span {
   font-size: 0.9rem;
-  color: #eee;
+  color: #000000;
   background: #e0cabf;
   border-radius: 8px;
   padding: 3px 8px;
 }
 
-/* === BOTÕES === */
 button,
 a[href^="/tasks/edit"],
 form button {
@@ -123,14 +117,12 @@ form button:hover {
   transform: scale(1.05);
 }
 
-/* === NENHUMA TAREFA === */
 p {
   text-align: center;
   font-size: 1.1rem;
   color: #fff;
 }
 
-/* === RODAPÉ === */
 footer {
   text-align: center;
   margin-top: 25px;
@@ -142,18 +134,18 @@ footer {
 
 
 .edit {
-    width: 100%; /* Ocupa a largura total do container */
-    padding: 10px 15px; /* Espaçamento interno */
+    width: 100%;  
+    padding: 10px 15px;  
     margin-top: 10px;
-    margin-bottom: 20px; /* Margem abaixo do campo */
+    margin-bottom: 20px;  
     
-    border: 1px solid #ccc; /* Borda cinza suave */
-    border-radius: 8px; /* Cantos levemente arredondados */
-    background-color: #f9f9f9; /* Fundo quase branco */
+    border: 1px solid #ccc; 
+    border-radius: 8px;  
+    background-color: #f9f9f9;  
     
-    font-size: 1.1em; /* Tamanho da fonte um pouco maior */
-    color: #333; /* Cor do texto escura */
-    font-family: Arial, sans-serif; /* Fonte padrão, legível */
+    font-size: 1.1em;  
+    color: #333;  
+    font-family: Arial, sans-serif;  
     
     transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
@@ -173,18 +165,18 @@ footer {
 
 
 .create {
-    width: 100%; /* Ocupa a largura total do container */
-    padding: 10px 15px; /* Espaçamento interno */
+    width: 100%;  
+    padding: 10px 15px;  
     margin-top: 10px;
-    margin-bottom: 20px; /* Margem abaixo do campo */
+    margin-bottom: 20px;  
     
-    border: 1px solid #ccc; /* Borda cinza suave */
-    border-radius: 8px; /* Cantos levemente arredondados */
-    background-color: #f9f9f9; /* Fundo quase branco */
+    border: 1px solid #ccc;  
+    border-radius: 8px;  
+    background-color: #f9f9f9;  
     
-    font-size: 1.1em; /* Tamanho da fonte um pouco maior */
-    color: #333; /* Cor do texto escura */
-    font-family: Arial, sans-serif; /* Fonte padrão, legível */
+    font-size: 1.1em;  
+    color: #333;  
+    font-family: Arial, sans-serif;  
     
     transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
@@ -204,32 +196,27 @@ footer {
 
 
 select[name="priority"] {
-    /* 1. Aparência Geral */
-    width: 100%; /* Ocupa a largura total */
+    width: 100%;  
     padding: 10px 15px;
     margin-bottom: 20px;
-    height: 45px; /* Altura para combinar com os campos de texto */
+    height: 45px;  
     
-    /* 2. Borda e Fundo */
     border: 1px solid #ccc;
-    border-radius: 8px; /* Cantos arredondados */
+    border-radius: 8px; 
     background-color: #f9f9f9;
     
-    /* 3. Tipografia */
     font-size: 1.1em;
     color: #333;
     font-family: Arial, sans-serif;
     
-    /* 4. Propriedades para melhorar a aparência no Chrome/Firefox */
-    -webkit-appearance: none; /* Remove o ícone padrão do Chrome/Safari */
-    -moz-appearance: none;    /* Remove o ícone padrão do Firefox */
-    appearance: none;         /* Remove o ícone padrão */
+    -webkit-appearance: none; 
+    -moz-appearance: none;    
+    appearance: none;         
     
-    /* 5. Adiciona um ícone de seta customizado */
     background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%2212%22%20viewBox%3D%220%200%2012%2012%22%3E%3Cpath%20fill%3D%22%23666%22%20d%3D%22M10.293%203.293L6%207.586%201.707%203.293A1%201%200%2000.293%204.707l5%205a1%201%200%20001.414%200l5-5A1%201%200%200010.293%203.293z%22%2F%3E%3C%2Fsvg%3E");
     background-repeat: no-repeat;
-    background-position: right 15px top 50%; /* Posiciona a seta à direita */
-    background-size: 12px; /* Tamanho da seta */
+    background-position: right 15px top 50%;  
+    background-size: 12px;  
 
     transition: border-color 0.3s;
 }
@@ -255,4 +242,9 @@ select[name="priority"]:focus {
     height: 35px;
     text-decoration: line-through;
     background-color: #ffcc70;
+}
+
+
+.filters{
+    margin-bottom: 20px;
 }

@@ -1,45 +1,50 @@
-const Task = require('../models/Task'); // O Controller precisa do Model para interagir com o banco
+const Task = require('../models/Task');
 
 module.exports = {
-  // Função para RENDERIZAR a página com todas as tarefas
- // Função para RENDERIZAR a página com todas as tarefas
-  async showTasks(req, res) {
-    const filter = req.query.filter || 'todas';
-    let where = {};
+  // 🔹 Todas as tarefas
+  async showAll(req, res) {
+    const tasks = await Task.findAll({ raw: true });
+    res.render('all', { tasks, activeFilter: 'all' });
+  },
 
-    if (filter === 'pendentes') where.done = false; // Busca booleano FALSE
-    if (filter === 'concluidas') where.done = true;  // Busca booleano TRUE
+  // 🔹 Somente concluídas
+  async showDone(req, res) {
+    const tasks = await Task.findAll({ where: { done: true }, raw: true });
+    res.render('all', { tasks, activeFilter: 'done' });
+  },
 
-    const tasks = await Task.findAll({ where, raw: true });
-    res.render('all', { tasks, filter });
-  },
+  // 🔹 Somente em andamento
+  async showDoing(req, res) {
+    const tasks = await Task.findAll({ where: { done: false }, raw: true });
+    res.render('all', { tasks, activeFilter: 'doing' });
+  },
 
-  // Função para RENDERIZAR a página de criação de tarefa
+  // 🔹 Página de criação
   createTask(req, res) {
     res.render('create');
   },
 
-  // Função para SALVAR uma nova tarefa no banco
+  // 🔹 Criar tarefa
   async saveTask(req, res) {
     await Task.create({
       title: req.body.title,
       description: req.body.description,
       done: false,
       priority: req.body.priority,
-      dueDate: req.body.dueDate, // novo campo
+      dueDate: req.body.dueDate,
     });
 
     res.redirect('/tasks');
   },
 
-  // Função para RENDERIZAR a página de edição com dados de UMA tarefa
+  // 🔹 Editar tarefa
   async editTask(req, res) {
     const id = req.params.id;
     const task = await Task.findByPk(id, { raw: true });
     res.render('edit', { task });
   },
 
-  // Função para ATUALIZAR uma tarefa no banco
+  // 🔹 Atualizar tarefa
   async updateTask(req, res) {
     const id = req.body.id;
 
@@ -49,7 +54,7 @@ module.exports = {
         description: req.body.description,
         done: req.body.done === 'on',
         priority: req.body.priority,
-        dueDate: req.body.dueDate, // novo campo
+        dueDate: req.body.dueDate,
       },
       { where: { id } }
     );
@@ -57,7 +62,7 @@ module.exports = {
     res.redirect('/tasks');
   },
 
-  // Função para DELETAR uma tarefa
+  // 🔹 Excluir tarefa
   async deleteTask(req, res) {
     const id = req.body.id;
     await Task.destroy({ where: { id } });
